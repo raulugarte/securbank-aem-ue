@@ -1,6 +1,6 @@
 // /blocks/faq/faq.js
 
-const GRAPHQL_ENDPOINT = 'https://author-p130407-e1279066.adobeaemcloud.com/graphql/execute.json/securbank/FAQListbyTag;tag=securbank:banking/savings-accounts/transactions';
+const GRAPHQL_ENDPOINT = 'https://author-p130407-e1279066.adobeaemcloud.com/graphql/execute.json/securbank/FAQListbyTag';
 
 function getUETag(block) {
   // Read tag from block dataset, fallback as needed
@@ -14,18 +14,18 @@ function createFaqItem(faq, fragmentPath, authorHost) {
   item.setAttribute('data-aue-resource', `urn:aemconnection:${fragmentPath}/jcr:content/data/master`);
   item.setAttribute('data-aue-type', 'reference');
 
+  // UE: question is an editable field (use the API name: 'question')
   const questionBtn = document.createElement('button');
   questionBtn.className = 'faq-question';
   questionBtn.textContent = faq.question || '';
   questionBtn.setAttribute('aria-expanded', 'false');
-  // UE: question is an editable field
-  questionBtn.setAttribute('data-aue-prop', 'jcr:title');
+  questionBtn.setAttribute('data-aue-prop', 'question');
 
+  // UE: answer is an editable field (use the API name: 'answer')
   const answerPanel = document.createElement('div');
   answerPanel.className = 'faq-answer';
-  answerPanel.setAttribute('data-aue-prop', 'jcr:description'); // make answer editable (adapt field name as needed)
+  answerPanel.setAttribute('data-aue-prop', 'answer');
   answerPanel.setAttribute('data-aue-type', 'richtext');
-  // Prefer HTML answer, fallback to plaintext
   answerPanel.innerHTML = faq.answer?.html || `<p>${faq.answer?.plaintext || ''}</p>`;
   answerPanel.hidden = true;
 
@@ -58,13 +58,8 @@ export default async function decorate(block) {
     return;
   }
 
-  // For Universal Editor overlay handling, make sure to open the correct panel on selection if needed
-
   faqs.forEach(faq => {
     const item = createFaqItem(faq, faq._path, '');
     block.appendChild(item);
   });
-
-  // Optionally, handle Universal Editor overlays for selection (advanced)
-  // See: https://github.com/adobe-rnd/aem-block-collection-xwalk/blob/main/scripts/editor-support.js
 }
