@@ -19,7 +19,8 @@
     color: #2C2C2C;
     max-width: 840px;
     margin: 0 auto 50px auto;
-    padding: 0;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .faq-item {
@@ -88,4 +89,6 @@
    /* outline: 2px solid #fb8500;
     background: #f7f7f2;
     border-radius: 4px; */
+
+    background: transparent;
 }
