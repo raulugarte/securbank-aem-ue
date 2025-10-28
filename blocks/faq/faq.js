@@ -11,23 +11,33 @@ function createFaqItem(faq, fragmentPath) {
   const item = document.createElement('div');
   item.className = 'faq-item';
   // ganze CF-Resource (master) adressieren
-  item.setAttribute('data-aue-resource', `urn:aemconnection:${fragmentPath}/jcr:content/data/master`);
-  item.setAttribute('data-aue-type', 'reference');
+  // item.setAttribute('data-aue-resource', `urn:aemconnection:${fragmentPath}/jcr:content/data/master`);
+  // item.setAttribute('data-aue-type', 'reference');
+
+  const cfResourceUrn = `urn:aemconnection:${fragmentPath}/jcr:content/data/master`;
+// Kein data-aue-type="reference" am Container setzen!
 
   // Frage: Plain-Text
   const questionBtn = document.createElement('button');
   questionBtn.className = 'faq-question';
   questionBtn.textContent = faq.question || '';
   questionBtn.setAttribute('aria-expanded', 'false');
+  // questionBtn.setAttribute('data-aue-prop', 'question');
+  questionBtn.setAttribute('data-aue-resource', cfResourceUrn);
   questionBtn.setAttribute('data-aue-prop', 'question');
-  questionBtn.setAttribute('data-aue-type', 'text');
+  questionBtn.setAttribute('data-aue-type', 'text'); // explizit Plain-Text
 
   // Antwort: Plain-Text (keine HTML-Tags, keine Sub-Property)
   const answerPanel = document.createElement('div');
   answerPanel.className = 'faq-answer';
-  answerPanel.setAttribute('data-aue-prop', 'answer');
-  answerPanel.setAttribute('data-aue-type', 'text');
-  answerPanel.textContent = faq.answer?.plaintext || '';
+  // answerPanel.setAttribute('data-aue-prop', 'answer');
+  // answerPanel.setAttribute('data-aue-type', 'text');
+  // answerPanel.textContent = faq.answer?.plaintext || '';
+ answerPanel.setAttribute('data-aue-resource', cfResourceUrn);
+ answerPanel.setAttribute('data-aue-prop', 'answer');
+ answerPanel.setAttribute('data-aue-type', 'text'); // <— Plain-Text
+ answerPanel.textContent = faq.answer?.plaintext || '';
+  
   answerPanel.hidden = true;
 
   questionBtn.addEventListener('click', () => {
