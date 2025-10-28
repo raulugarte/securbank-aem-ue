@@ -1,42 +1,90 @@
-/* /blocks/faq/faq.css */
+.faq {
+    background-color: #F3F2F6;
+    padding: 0 0 40px 0;
+}
+
+.faq .sectionHeading {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.faq-list, /* If you use a <ul class="faq-list">, keep this selector */
+.faq-items {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content: space-between;
+    color: #2C2C2C;
+    max-width: 840px;
+    margin: 0 auto 50px auto;
+    padding: 0;
+}
 
 .faq-item {
-  border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 8px;
-  padding: 0.5em 0;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(44,44,44,0.06);
+    transition: box-shadow 0.2s;
 }
+
+.faq-item:focus-within,
+.faq-item:hover {
+    box-shadow: 0 4px 14px rgba(44,44,44,0.12);
+}
+
 .faq-question {
-  display: block;
-  width: 100%;
-  background: none;
-  border: none;
-  font-size: 1.1em;
-  font-weight: bold;
-  text-align: left;
-  padding: 0;
-  cursor: pointer;
-  outline: none;
-  color: #1256c8;
-  transition: color 0.2s;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font: normal normal 600 18px/18px adobe-clean, Arial, sans-serif;
+    color: #2C2C2C;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    letter-spacing: 0;
 }
-.faq-question[aria-expanded="true"] {
-  color: #fb8500;
+
+.faq-question span.toggle {
+    margin-left: 10px;
+    font-size: 18px;
+    transition: transform 0.2s;
+    user-select: none;
 }
+
 .faq-answer {
-  margin-top: 0.5em;
-  padding-left: 1.5em;
-  font-size: 1em;
-  line-height: 1.5;
-  color: #222;
+    text-align: left;
+    font: normal normal normal 18px/22px adobe-clean, Arial, sans-serif;
+    color: #2C2C2C;
+    opacity: 1;
+    margin: 10px 0 0 0;
+    padding-top: 8px;
 }
 
-/* Accessibility focus style */
-.faq-question:focus {
-  outline: 2px solid #fb8500;
+/* Toggle icon: +/− (works with JS toggling aria-expanded) */
+.faq-question[aria-expanded="false"] .toggle::after {
+    content: "+";
 }
 
-/* Error and empty states */
+.faq-question[aria-expanded="true"] .toggle::after {
+    content: "–";
+}
+
 .faq-error, .faq-empty {
-  color: #d70022;
-  padding: 1em;
+    color: #d70022;
+    padding: 1em;
+    text-align: center;
+}
+
+.faq-question:focus {
+    outline: 2px solid #fb8500;
+    background: #f7f7f2;
+    border-radius: 4px;
 }
