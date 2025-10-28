@@ -1,6 +1,6 @@
 // /blocks/faq/faq.js
 
-const GRAPHQL_ENDPOINT = 'https://author-p130407-e1279066.adobeaemcloud.com/graphql/execute.json/securbank/FAQListbyTag';
+const GRAPHQL_ENDPOINT = 'https://author-p130407-e1279066.adobeaemcloud.com/graphql/execute.json/securbank/FAQListbyTag;tag=securbank:banking/savings-accounts/transactions';
 
 function getUETag(block) {
   // Read tag from block dataset, fallback as needed
