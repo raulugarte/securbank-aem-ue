@@ -22,12 +22,21 @@ function createFaqItem(faq, fragmentPath, authorHost) {
   questionBtn.setAttribute('data-aue-prop', 'question');
 
   // UE: answer is an editable field (use the API name: 'answer')
-  const answerPanel = document.createElement('div');
+  /* const answerPanel = document.createElement('div');
   answerPanel.className = 'faq-answer';
   answerPanel.setAttribute('data-aue-prop', 'answer');
   answerPanel.setAttribute('data-aue-type', 'richtext');
   answerPanel.innerHTML = faq.answer?.html || `<p>${faq.answer?.plaintext || ''}</p>`;
+  answerPanel.hidden = true; */
+
+
+  const answerPanel = document.createElement('div');
+  answerPanel.className = 'faq-answer';
+  answerPanel.setAttribute('data-aue-prop', 'answer');
+  // answerPanel.setAttribute('data-aue-type', 'text'); // optional
+  answerPanel.textContent = faq.answer || '';
   answerPanel.hidden = true;
+  
 
   // Toggle expand/collapse
   questionBtn.addEventListener('click', () => {
