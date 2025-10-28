@@ -7,29 +7,29 @@ function getUETag(block) {
   return block.dataset.tag || 'defaultTag';
 }
 
-function createFaqItem(faq, fragmentPath, authorHost) {
-  // Instrumentation for Universal Editor: block resource (full CF), per-field editing
+function createFaqItem(faq, fragmentPath) {
   const item = document.createElement('div');
   item.className = 'faq-item';
+  // ganze CF-Resource (master) adressieren
   item.setAttribute('data-aue-resource', `urn:aemconnection:${fragmentPath}/jcr:content/data/master`);
   item.setAttribute('data-aue-type', 'reference');
 
-  // UE: question is an editable field (use the API name: 'question')
+  // Frage: Plain-Text
   const questionBtn = document.createElement('button');
   questionBtn.className = 'faq-question';
   questionBtn.textContent = faq.question || '';
   questionBtn.setAttribute('aria-expanded', 'false');
   questionBtn.setAttribute('data-aue-prop', 'question');
+  questionBtn.setAttribute('data-aue-type', 'text');
 
-  // UE: answer is an editable field (use the API name: 'answer')
+  // Antwort: Plain-Text (keine HTML-Tags, keine Sub-Property)
   const answerPanel = document.createElement('div');
   answerPanel.className = 'faq-answer';
   answerPanel.setAttribute('data-aue-prop', 'answer');
-  answerPanel.setAttribute('data-aue-type', 'richtext');
-  answerPanel.innerHTML = faq.answer?.html || `<p>${faq.answer?.plaintext || ''}</p>`;
+  answerPanel.setAttribute('data-aue-type', 'text');
+  answerPanel.textContent = faq.answer?.plaintext || '';
   answerPanel.hidden = true;
 
-  // Toggle expand/collapse
   questionBtn.addEventListener('click', () => {
     const expanded = questionBtn.getAttribute('aria-expanded') === 'true';
     questionBtn.setAttribute('aria-expanded', String(!expanded));
