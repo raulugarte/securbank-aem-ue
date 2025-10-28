@@ -1,6 +1,7 @@
 .faq {
     background-color: #F3F2F6;
-    padding: 0 0 40px 0;
+    # padding: 0 0 40px 0;
+    padding: 30px;
 }
 
 .faq .sectionHeading {
