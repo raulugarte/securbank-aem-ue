@@ -85,7 +85,7 @@
 }
 
 .faq-question:focus {
-    outline: 2px solid #fb8500;
+   /* outline: 2px solid #fb8500;
     background: #f7f7f2;
-    border-radius: 4px;
+    border-radius: 4px; */
 }
