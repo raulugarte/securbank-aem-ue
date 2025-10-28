@@ -1,69 +1,42 @@
-.section > .faq-wrapper {
-    max-width: 1920px;
-    background-color: #F3F2F6;
+/* /blocks/faq/faq.css */
+
+.faq-item {
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 8px;
+  padding: 0.5em 0;
+}
+.faq-question {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  color: #1256c8;
+  transition: color 0.2s;
+}
+.faq-question[aria-expanded="true"] {
+  color: #fb8500;
+}
+.faq-answer {
+  margin-top: 0.5em;
+  padding-left: 1.5em;
+  font-size: 1em;
+  line-height: 1.5;
+  color: #222;
 }
 
-.section-heading {
-    text-align: center;
-    padding: 40px;
-    font-size: 36px;
+/* Accessibility focus style */
+.faq-question:focus {
+  outline: 2px solid #fb8500;
 }
 
-.faq-list {
-    display: flex;
-    flex-flow: column wrap;
-    list-style-type: none;
-    justify-content:space-between;
-    padding: 0 0 50px;
-    padding-inline-start:0;
-    color: #2C2C2C;
-    max-width: 840px;
-    margin: 0 auto;
-}
-
-.faq-list li {
-    text-decoration: none;
-    font-size: 18px;
-    background-color: white;
-    padding: 20px;
-    margin-bottom: 10px;
-    transition: all 0.5s;
-}
-
-.faq-list li:not(:hover) {
-    opacity: 0.7;
-}
-  
-
-.faq-heading {
-    text-align: left;
-    font: normal normal 600 18px/18px adobe-clean, sans-serif;
-    letter-spacing: 0;
-    color: #2C2C2C;
-    opacity: 1;
-    margin: 0;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.faq-heading b::after {
-    content: "+";
-    font-size: 18px;
-    margin-right: 5px;
-}
-
-details[open] summary b::after {
-    content: "-";
-}
-
-.faq-description {
-    text-align: left;
-    font: normal normal normal 18px/22px adobe-clean, sans-serif;
-    letter-spacing: 0;
-    color: #2C2C2C;
-    opacity: 1;
-    margin-bottom: 0;
-    margin-top: 10px;
+/* Error and empty states */
+.faq-error, .faq-empty {
+  color: #d70022;
+  padding: 1em;
 }
