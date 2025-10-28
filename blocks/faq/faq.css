@@ -33,7 +33,7 @@
 
 .faq-item:focus-within,
 .faq-item:hover {
-    box-shadow: 0 4px 14px rgba(44,44,44,0.12);
+    /* box-shadow: 0 4px 14px rgba(44,44,44,0.12); */
 }
 
 .faq-question {
